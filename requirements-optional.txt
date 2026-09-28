@@ -1,0 +1,47 @@
+# =============================================================================
+# gismol — optional extras
+# =============================================================================
+# These packages are NOT required to use gismol.  They unlock specific
+# capabilities when present; every module degrades gracefully to a pure-Python
+# fallback if the corresponding package is missing.
+#
+# Install with:
+#     pip install -r requirements-optional.txt
+# or selectively, e.g.:
+#     pip install "gismol[fast,plot]"
+# -----------------------------------------------------------------------------
+
+# ---- numerical acceleration -------------------------------------------------
+# Speeds up MLP training, Lyapunov sampling and free-energy computations
+# by ~10-50x on large hierarchies.  gismol detects numpy at import time
+# and uses it transparently inside gismol.neural.nn and gismol.dynamical.
+numpy>=1.24,<3.0
+
+# Optional: BLAS-accelerated backends (pick one matching your platform)
+# scipy>=1.11,<2.0              # sparse linear algebra, ODE integration
+
+# ---- graph & visualisation --------------------------------------------------
+# Enables gismol.categorical.functors.Graph.to_networkx() and pretty DAG plots
+networkx>=3.2,<4.0
+matplotlib>=3.8,<4.0
+graphviz>=0.20,<1.0             # requires the system `graphviz` binary
+
+# ---- NLP enhancements -------------------------------------------------------
+# If present, gismol.nlp.embedders.SentenceTransformerEmbedder becomes
+# available for high-quality semantic embeddings of COH descriptions.
+# sentence-transformers>=2.7,<4.0
+# transformers>=4.40,<5.0
+# torch>=2.2,<3.0
+
+# ---- serialisation & schema -------------------------------------------------
+# Optional richer JSON schema validation for COHObject.to_dict() payloads
+jsonschema>=4.21,<5.0
+
+# ---- notebooks --------------------------------------------------------------
+jupyterlab>=4.1,<5.0
+ipywidgets>=8.1,<9.0
+
+# ---- profiling --------------------------------------------------------------
+py-spy>=0.3.14
+memory-profiler>=0.61
+line-profiler>=4.1

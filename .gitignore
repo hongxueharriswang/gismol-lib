@@ -1,0 +1,140 @@
+# =========================
+# Python / Django .gitignore
+# =========================
+
+# --- Bytecode ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- C extensions ---
+*.so
+
+# --- Virtual Environments ---
+venv/
+.venv_gismol/
+env/
+ENV/
+*.env
+.vscode/
+
+pip-wheel-metadata/
+
+# --- Distribution / Packaging ---
+build/
+dist/
+wheels/
+*.egg-info/
+*.egg
+.eggs/
+
+# --- Installer logs ---
+pip-log.txt
+pip-delete-this-directory.txt
+
+# --- Unit test / Coverage ---
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# --- Jupyter Notebook ---
+.ipynb_checkpoints/
+jupyter_cache/
+*.ipynb~
+
+# --- PyCharm / JetBrains ---
+.idea/
+*.iml
+
+# --- VS Code ---
+.vscode/
+.history/
+
+# --- mypy / static typing ---
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+
+# --- Django ---
+*.log
+*.pot
+*.pyc
+*.sqlite3
+/staticfiles/
+/media/
+/local_settings.py
+
+# --- Flask / Other Frameworks ---
+instance/
+.webassets-cache
+
+# --- Environment files ---
+.env
+.env.*
+*.env.*
+.envrc
+
+# --- Server logs ---
+logs/
+*.log
+
+# --- OS-specific ---
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# --- Editor backups ---
+*~
+*.swp
+*.swo
+*.tmp
+
+# --- Misc ---
+# compiled HTML/Doc builds
+docs/_build/
+site/
+
+# --- Tools ---
+# mypy, pytype, etc. already covered
+# celery beat scheduler
+celerybeat-schedule
+celerybeat.pid
+
+# --- Node (if using React/Vue inside Django) ---
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# --- GitHub Actions cache (optional) ---
+# .github/actions/cache/
+
+# --- Local database ---
+*.db
+*.sqlite3
+
+# --- Caches & temporary artifacts ---
+.cache/
+tmp/
+temp/

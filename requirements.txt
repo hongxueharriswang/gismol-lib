@@ -1,0 +1,24 @@
+# =============================================================================
+# gismol — runtime requirements
+# =============================================================================
+# The gismol COH toolkit has NO mandatory third-party runtime dependencies.
+# It is pure Python (standard library only) and installs on any CPython >= 3.9.
+#
+# This file is intentionally empty of package entries so that
+#     pip install -r requirements.txt
+# is a safe no-op.  Everything needed to import and use gismol is listed
+# below as a comment for reference only.
+# -----------------------------------------------------------------------------
+#
+# Python version:
+#   python_requires >= 3.9
+#
+# Required stdlib modules used by gismol (no install needed):
+#   math, random, hashlib, re, unicodedata, json, uuid, copy, ast,
+#   operator, inspect, itertools, collections, functools, typing,
+#   dataclasses, unittest, tempfile, os, sys, time, statistics
+#
+# If you are deploying into a minimal container and want to verify the
+# interpreter version explicitly, pin it via the environment:
+#   PYTHON_VERSION=3.11
+# -----------------------------------------------------------------------------

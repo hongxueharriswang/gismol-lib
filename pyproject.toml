@@ -1,0 +1,120 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gismol"
+version = "0.1.0"
+description = "Constrained Object Hierarchies — a unified framework for AGI modelling"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "gismol contributors" }]
+keywords = [
+    "artificial-general-intelligence",
+    "constrained-object-hierarchies",
+    "category-theory",
+    "dynamical-systems",
+    "neurosymbolic",
+    "hierarchical-learning",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+# ---- runtime: nothing mandatory ---------------------------------------------
+dependencies = []
+
+# ---- optional extras --------------------------------------------------------
+[project.optional-dependencies]
+fast      = ["numpy>=1.24,<3.0"]
+plot      = ["networkx>=3.2,<4.0", "matplotlib>=3.8,<4.0", "graphviz>=0.20,<1.0"]
+nlp       = ["sentence-transformers>=2.7,<4.0"]
+schema    = ["jsonschema>=4.21,<5.0"]
+notebook  = ["jupyterlab>=4.1,<5.0", "ipywidgets>=8.1,<9.0"]
+dev       = [
+    "pytest>=7.4,<9.0",
+    "pytest-cov>=4.1,<6.0",
+    "pytest-xdist>=3.3,<4.0",
+    "hypothesis>=6.88,<7.0",
+    "ruff>=0.4,<0.7",
+    "mypy>=1.8,<2.0",
+    "coverage[toml]>=7.4,<8.0",
+]
+docs      = ["sphinx>=7.2,<9.0", "sphinx-rtd-theme>=2.0,<3.0", "myst-parser>=2.0,<5.0"]
+all       = ["gismol[fast,plot,nlp,schema,notebook]"]
+
+[project.urls]
+Homepage     = "https://github.com/your-org/gismol"
+Documentation = "https://gismol.readthedocs.io"
+Source       = "https://github.com/your-org/gismol"
+
+# ---- packaging layout -------------------------------------------------------
+[tool.setuptools]
+packages = [
+    "gismol",
+    "gismol.core",
+    "gismol.categorical",
+    "gismol.dynamical",
+    "gismol.neural",
+    "gismol.nlp",
+    "gismol.reasoners",
+    "gismol.stability",
+    "gismol.tests",
+]
+include-package-data = true
+
+[tool.setuptools.package-data]
+gismol = ["py.typed"]
+
+# ---- tool configuration -----------------------------------------------------
+[tool.pytest.ini_options]
+testpaths = ["gismol/tests"]
+python_files = ["test_*.py"]
+addopts = "-ra --strict-markers"
+markers = [
+    "slow: long-running integration tests",
+    "nlp: natural-language pipeline tests",
+    "neural: neural-component training tests",
+]
+
+[tool.coverage.run]
+source = ["gismol"]
+branch = true
+omit = ["gismol/tests/*", "*/__init__.py"]
+
+[tool.coverage.report]
+fail_under = 80
+show_missing = true
+exclude_lines = [
+    "pragma: no cover",
+    "raise NotImplementedError",
+    "if TYPE_CHECKING:",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "C4", "SIM", "RUF"]
+ignore = ["E501"]  # line length handled by formatter
+
+[tool.mypy]
+python_version = "3.9"
+warn_unused_ignores = true
+warn_redundant_casts = true
+disallow_untyped_defs = false   # gradual typing is fine for a research toolkit
+ignore_missing_imports = true
+
+[tool.black]
+line-length = 100
+target-version = ["py39", "py310", "py311", "py312"]

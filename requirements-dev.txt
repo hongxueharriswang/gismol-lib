@@ -1,0 +1,36 @@
+# =============================================================================
+# gismol — development requirements
+# =============================================================================
+# Install with:
+#     pip install -r requirements-dev.txt
+#
+# These packages are only needed to run the test suite, lint the code,
+# generate coverage reports and build the documentation.
+# -----------------------------------------------------------------------------
+
+# ---- testing ----------------------------------------------------------------
+pytest>=7.4,<9.0
+pytest-cov>=4.1,<6.0
+pytest-xdist>=3.3,<4.0          # parallel test execution
+hypothesis>=6.88,<7.0           # property-based tests for expressions/constraints
+
+# ---- static analysis & linting ---------------------------------------------
+ruff>=0.4,<0.7                  # fast linter + formatter
+mypy>=1.8,<2.0                  # static type checking
+black>=24.3,<25.0               # consistent formatting (optional; ruff-format works too)
+
+# ---- type stubs -------------------------------------------------------------
+types-requests>=2.31            # only if you add HTTP-backed embedders
+
+# ---- packaging & build ------------------------------------------------------
+build>=1.2,<2.0
+twine>=5.0,<6.0
+wheel>=0.43,<0.46
+
+# ---- documentation ----------------------------------------------------------
+sphinx>=7.2,<9.0
+sphinx-rtd-theme>=2.0,<3.0
+myst-parser>=2.0,<5.0           # Markdown in Sphinx
+
+# ---- coverage gate ----------------------------------------------------------
+coverage[toml]>=7.4,<8.0
