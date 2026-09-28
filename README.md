@@ -1,4 +1,4 @@
-# gismol - General Intelligent Systems Modelling Language
+# GISMOL - General Intelligent Systems Modelling Language
 
 > **A mathematically grounded Python toolkit for Constrained Object Hierarchies (COH) — a unified framework for modelling intelligent systems and artificial general intelligence.**
 
@@ -12,17 +12,17 @@
 
 ## Overview
 
-`gismol` is a **pure-Python, zero-dependency toolkit** implementing the **Constrained Object Hierarchies (COH)** framework — a unified mathematical foundation for modelling intelligent systems and artificial general intelligence.
+`GISMOL` is a **pure-Python, zero-dependency toolkit** implementing the **Constrained Object Hierarchies (COH)** framework — a unified mathematical foundation for modelling intelligent systems and artificial general intelligence.
 
 The COH framework formalises intelligence as *constrained hierarchical optimisation*. It draws on theoretical neuroscience (hierarchical cortical organisation, predictive coding, homeostasis), category theory (compositional structure, products, exponentials, limits), and dynamical systems theory (hybrid automata, Lyapunov stability, free-energy minimisation). The result is a single coherent architecture that unifies symbolic reasoning, neural learning, and constraint-driven regulation — while remaining computationally tractable and biologically plausible.
 
-`gismol` gives you a **working implementation** of that theory: hierarchical object modelling, constraint satisfaction, hybrid dynamics, learnable neural components, categorical composition, natural-language compilation, and multi-domain reasoning.
+`GISMOL` gives you a **working implementation** of that theory: hierarchical object modelling, constraint satisfaction, hybrid dynamics, learnable neural components, categorical composition, natural-language compilation, and multi-domain reasoning.
 
 ---
 
 ## The COH 9-tuple
 
-Every intelligent system in `gismol` is a `COHObject`, defined as a **9-tuple**:
+Every intelligent system in `GISMOL` is a `COHObject`, defined as a **9-tuple**:
 
 $$
 \mathcal{O} = (\mathbf{C},\, \mathbf{A},\, \mathbf{M},\, \mathbf{N},\, \mathbf{E},\, \mathbf{I},\, \mathbf{T},\, \mathbf{G},\, \mathbf{D})
@@ -67,25 +67,25 @@ Every component is **orthogonal** and **minimal**: removing any one of the nine 
 ### From PyPI *(coming soon)*
 
 ```bash
-pip install gismol
+pip install GISMOL
 ```
 
 ### From source (recommended for now)
 
 ```bash
-git clone https://github.com/your-org/gismol.git
-cd gismol
+git clone https://github.com/your-org/GISMOL.git
+cd GISMOL
 pip install -e .
 ```
 
 ### Zero-install verification
 
-Because `gismol` has **no mandatory runtime dependencies**, you can use it directly from a checkout:
+Because `GISMOL` has **no mandatory runtime dependencies**, you can use it directly from a checkout:
 
 ```bash
-git clone https://github.com/your-org/gismol.git
-cd gismol
-python -c "import gismol; print(gismol.__version__)"
+git clone https://github.com/your-org/GISMOL.git
+cd GISMOL
+python -c "import GISMOL; print(GISMOL.__version__)"
 ```
 
 ### Optional extras
@@ -105,11 +105,11 @@ pip install -e ".[all]"       # everything
 ### 1 · Build a COH object programmatically
 
 ```python
-from gismol import COHObject, Attribute, Method
-from gismol.core.constraints import IdentityConstraint, TriggerConstraint, GoalConstraint
-from gismol.core.daemons import InvariantDaemon, BoundaryDaemon
-from gismol.neural.components import MLPComponent
-from gismol.core.embedding import FeatureEmbedder
+from GISMOL import COHObject, Attribute, Method
+from GISMOL.core.constraints import IdentityConstraint, TriggerConstraint, GoalConstraint
+from GISMOL.core.daemons import InvariantDaemon, BoundaryDaemon
+from GISMOL.neural.components import MLPComponent
+from GISMOL.core.embedding import FeatureEmbedder
 
 # Create the object
 thermostat = COHObject("thermostat", description="Room temperature controller")
@@ -161,7 +161,7 @@ print(thermostat.component_report())
 ### 2 · Compile from natural language
 
 ```python
-from gismol.nlp import text_to_coh
+from GISMOL.nlp import text_to_coh
 
 reactor = text_to_coh(
     "Define a thermal plant called reactor. "
@@ -186,7 +186,7 @@ print(f"Discounted return: {traj.discounted_return(gamma=0.99):.4f}")
 ### 4 · Reason over the model
 
 ```python
-from gismol.reasoners import GeneralReasoner, Query
+from GISMOL.reasoners import GeneralReasoner, Query
 
 reasoner = GeneralReasoner()
 result = reasoner.infer(reactor, Query("maximize energy output"))
@@ -197,7 +197,7 @@ print(reasoner.explain(result))
 ### 5 · Chat with the model
 
 ```python
-from gismol.nlp import ChatModule
+from GISMOL.nlp import ChatModule
 
 chat = ChatModule(coh=reactor)
 print(chat.process("describe the reactor").text)
@@ -210,7 +210,7 @@ print(chat.process("simulate 50 steps").text)
 ## Repository Layout
 
 ```
-gismol/
+GISMOL/
 ├── categorical/          # Category-theoretic layer (§3 of the theory)
 │   ├── category.py       #   Category, Morphism, COHCategory, COHMorphism
 │   ├── functors.py       #   ComponentFunctor, ForgetfulFunctor, EmbeddingFunctor
@@ -291,7 +291,7 @@ report = fleet.soundness_report()
 Constraints can be written as plain callables, as `Expr` trees, or as strings parsed by the safe expression engine:
 
 ```python
-from gismol.core import expression as E
+from GISMOL.core import expression as E
 
 expr = (E.Var("x") > 0) & (E.Var("x") < 10)
 print(expr.evaluate({"x": 5}))   # True
@@ -333,7 +333,7 @@ traj = coh.simulate(steps=100, dt=0.01, policy=lambda s, t: "advance")
 The `COHCategory` exposes the cartesian-closed structure that the paper proves (§3.1):
 
 ```python
-from gismol.categorical import COHCategory
+from GISMOL.categorical import COHCategory
 
 cat = COHCategory()
 cat.register(a); cat.register(b)
@@ -350,7 +350,7 @@ assert cat.is_cartesian_closed()
 ### Stability certificates
 
 ```python
-from gismol.stability import ConstraintStabilityAnalyzer
+from GISMOL.stability import ConstraintStabilityAnalyzer
 
 analyzer = ConstraintStabilityAnalyzer(coh)
 cert = analyzer.analyze(states=[s1, s2, s3])
@@ -361,7 +361,7 @@ print(cert)
 ### Constrained RL
 
 ```python
-from gismol.neural.constrained_rl import ConstrainedMDP, LagrangianAgent
+from GISMOL.neural.constrained_rl import ConstrainedMDP, LagrangianAgent
 
 env = ConstrainedMDP(n_states=8, n_actions=4, cost_limit=0.5)
 agent = LagrangianAgent(env, seed=0)
@@ -387,7 +387,7 @@ text
 ```
 
 ```python
-from gismol.nlp import TextToCOH
+from GISMOL.nlp import TextToCOH
 
 builder = TextToCOH()
 coh = builder.build(
@@ -423,10 +423,10 @@ The toolkit includes a comprehensive test suite covering every submodule — exp
 
 ```bash
 # Run the full suite
-python -m unittest gismol.tests.test_all -v
+python -m unittest GISMOL.tests.test_all -v
 
 # Or with pytest (parallel, coverage)
-pytest gismol/tests -n auto --cov=gismol --cov-report=term-missing
+pytest GISMOL/tests -n auto --cov=GISMOL --cov-report=term-missing
 ```
 
 Example output:
@@ -469,15 +469,15 @@ We welcome contributions of all kinds — bug reports, feature proposals, docume
 
 ```bash
 # Set up a development environment
-git clone https://github.com/your-org/gismol.git
-cd gismol
+git clone https://github.com/your-org/GISMOL.git
+cd GISMOL
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 
 # Before opening a pull request
-ruff check gismol/
-mypy gismol/
-pytest gismol/tests -n auto
+ruff check GISMOL/
+mypy GISMOL/
+pytest GISMOL/tests -n auto
 ```
 
 Guidelines:
@@ -492,7 +492,7 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md) for details.
 
 ## Citation
 
-If you use `gismol` in academic work, please cite the COH theory paper and this toolkit:
+If you use `GISMOL` in academic work, please cite the COH theory paper and this toolkit:
 
 ```bibtex
 @article{coh2025foundations,
@@ -505,11 +505,11 @@ If you use `gismol` in academic work, please cite the COH theory paper and this 
              Category Theory, Dynamical Systems, Neurosymbolic AI}
 }
 
-@software{gismol2025,
-  title  = {gismol: A Python Toolkit for Constrained Object Hierarchies},
-  author = {gismol contributors},
+@software{GISMOL2025,
+  title  = {GISMOL: A Python Toolkit for Constrained Object Hierarchies},
+  author = {GISMOL contributors},
   year   = {2025},
-  url    = {https://github.com/your-org/gismol},
+  url    = {https://github.com/your-org/GISMOL},
   version = {0.1.0}
 }
 ```
@@ -518,7 +518,7 @@ If you use `gismol` in academic work, please cite the COH theory paper and this 
 
 ## Related Work
 
-`gismol` builds on and unifies ideas from several traditions:
+`GISMOL` builds on and unifies ideas from several traditions:
 
 - **Cognitive architectures** — ACT-R, SOAR, CLARION (production systems with hierarchical structure)
 - **Predictive coding / free energy** — Friston's FEP; variational inference
@@ -537,7 +537,7 @@ The COH framework's contribution is to formalise these as **one constrained hier
 MIT License — see [`LICENSE`](LICENSE) for details.
 
 ```
-Copyright (c) 2025 gismol contributors
+Copyright (c) 2025 GISMOL contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
